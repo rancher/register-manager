@@ -1,3 +1,6 @@
 .idea/
 register-tool.iml
 register-tool
+bin/
+dist/
+.dapper

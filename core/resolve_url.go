@@ -1,20 +1,20 @@
 package core
 
 import (
-	"net/http"
-	"io/ioutil"
-	"strings"
 	"fmt"
-	"time"
 	"github.com/rancher/go-rancher/v2"
+	"io/ioutil"
+	"net/http"
 	"os"
+	"strings"
+	"time"
 )
 
 const (
 	Schema = "X-API-Schemas"
 )
 
-func ResolveUrl(url string) error {
+func ResolveURL(url string) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
@@ -40,8 +40,8 @@ func ResolveUrl(url string) error {
 	accessKey := os.Getenv(AccessKey)
 	secretKey := os.Getenv(SecretKey)
 	apiClient, err := client.NewRancherClient(&client.ClientOpts{
-		Timeout: time.Second * 30,
-		Url: url,
+		Timeout:   time.Second * 30,
+		Url:       url,
 		AccessKey: accessKey,
 		SecretKey: secretKey,
 	})
@@ -62,8 +62,8 @@ func ResolveUrl(url string) error {
 			fmt.Println("Failed to find admin resource group")
 		}
 		apiClient, err = client.NewRancherClient(&client.ClientOpts{
-			Timeout: time.Second * 30,
-			Url: projects.Data[0].Links["schemas"],
+			Timeout:   time.Second * 30,
+			Url:       projects.Data[0].Links["schemas"],
 			AccessKey: accessKey,
 			SecretKey: secretKey,
 		})

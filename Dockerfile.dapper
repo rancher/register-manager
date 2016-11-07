@@ -1,0 +1,16 @@
+FROM golang:1.7.3
+RUN go get github.com/rancher/trash
+RUN go get github.com/golang/lint/golint
+RUN apt-get update && apt-get install -y iptables && \
+    curl -o /usr/bin/docker -sL -f https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 && \
+    chmod +x /usr/bin/docker
+ENV PATH /go/bin:$PATH
+ENV DAPPER_SOURCE /go/src/github.com/rancher/register-tool
+ENV DAPPER_OUTPUT bin dist
+ENV DAPPER_ENV TAG REPO
+ENV TRASH_CACHE ${DAPPER_SOURCE}/.trash-cache
+ENV DAPPER_RUN_ARGS --privileged
+WORKDIR ${DAPPER_SOURCE}
+VOLUME "/var/lib/docker"
+ENTRYPOINT ["./scripts/entry"]
+CMD ["ci"]

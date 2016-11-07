@@ -1,21 +1,21 @@
 package main
 
 import (
-	"fmt"
 	"flag"
-	"os"
+	"fmt"
 	"github.com/rancher/register-tool/core"
+	"os"
 )
 
 var (
-	token = ""
-	resolveUrl = ""
-	url = ""
+	token      = ""
+	resolveURL = ""
+	url        = ""
 )
 
 func main() {
 	flag.StringVar(&token, "registration-token", "", "Registration Token")
-	flag.StringVar(&resolveUrl, "resolve-url", "", "Resolve Url")
+	flag.StringVar(&resolveURL, "resolve-url", "", "Resolve Url")
 	flag.StringVar(&url, "load-url", "", "Load")
 	flag.Parse()
 	if token != "" {
@@ -26,9 +26,9 @@ func main() {
 			os.Exit(1)
 		}
 	}
-	if resolveUrl != "" {
+	if resolveURL != "" {
 		// resolve url
-		err := core.ResolveUrl(resolveUrl)
+		err := core.ResolveURL(resolveURL)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)

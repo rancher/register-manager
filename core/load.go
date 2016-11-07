@@ -1,11 +1,11 @@
 package core
 
 import (
-	"net/http"
 	"bufio"
-	"strings"
 	"fmt"
+	"net/http"
 	"os"
+	"strings"
 )
 
 func Load(url string) error {

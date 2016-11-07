@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+source $(dirname $0)/version
+
+cd $(dirname $0)/..
+
+rm -rf dist/artifacts
+
+mkdir -p build/bin
+mkdir -p dist/artifacts
+
+cp -rf bin/register-tool build/bin
+
+cd build
+
+tar czf ../dist/artifacts/register-tool.tar.gz bin/
+echo Created ../dist/artifacts/register-tool.tar.gz

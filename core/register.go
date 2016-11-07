@@ -1,13 +1,13 @@
 package core
 
 import (
-	"time"
 	"github.com/rancher/go-rancher/v2"
 	"os"
+	"time"
 )
 
 const (
-	URL = "CATTLE_URL"
+	URL       = "CATTLE_URL"
 	AccessKey = "CATTLE_REGISTRATION_ACCESS_KEY"
 	SecretKey = "CATTLE_REGISTRATION_SECRET_KEY"
 )
@@ -18,8 +18,8 @@ func Register(token string) error {
 	secretKey := os.Getenv(SecretKey)
 
 	apiClient, err := client.NewRancherClient(&client.ClientOpts{
-		Timeout: time.Second * 30,
-		Url: url,
+		Timeout:   time.Second * 30,
+		Url:       url,
 		AccessKey: accessKey,
 		SecretKey: secretKey,
 	})
