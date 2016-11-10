@@ -1,0 +1,3 @@
+import:
+- package: github.com/rancher/go-rancher
+  version: af955cd2925739b199df4077fafaddfaa4834a2f
