@@ -1,6 +1,5 @@
+.dapper
 .idea/
-register-tool.iml
-register-tool
 bin/
 dist/
-.dapper
+register-tool.iml

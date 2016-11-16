@@ -30,7 +30,7 @@ func Load(url string) error {
 			value := fmt.Sprintf("[Environment]::SetEnvironmentVariable(\"CATTLE_URL\", \"%s\", \"Machine\")", str[1:len(str)-1])
 			fmt.Println(value)
 		} else if strings.Contains(line, "DETECTED_CATTLE_AGENT_IP") {
-			if os.Getenv("CATTLE_AGENT_IP") != "" {
+			if os.Getenv("CATTLE_AGENT_IP") == "" {
 				str := strings.Split(line, "=")[1]
 				value := fmt.Sprintf("[Environment]::SetEnvironmentVariable(\"CATTLE_AGENT_IP\", \"%s\", \"Machine\")", str[1:len(str)-1])
 				fmt.Println(value)

@@ -11,12 +11,14 @@ var (
 	token      = ""
 	resolveURL = ""
 	url        = ""
+	windows    = ""
 )
 
 func main() {
 	flag.StringVar(&token, "registration-token", "", "Registration Token")
 	flag.StringVar(&resolveURL, "resolve-url", "", "Resolve Url")
 	flag.StringVar(&url, "load-url", "", "Load")
+	flag.StringVar(&windows, "windows", "", "Register in windows")
 	flag.Parse()
 	if token != "" {
 		// register accessKey and secretKey
@@ -37,6 +39,13 @@ func main() {
 	if url != "" {
 		// load env
 		err := core.Load(url)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	}
+	if windows != "" {
+		err := core.RegisterWindows(windows)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
