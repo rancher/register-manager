@@ -1,3 +1,9 @@
 import:
 - package: github.com/rancher/go-rancher
   version: af955cd2925739b199df4077fafaddfaa4834a2f
+
+- package: github.com/gorilla/websocket
+  version: 9fbf129ff2a3cf2467f7d0021de2eb4d3aecc109
+
+- package: github.com/pkg/errors
+  version: 248dadf4e9068a0b3e79f02ed0a610d935de5302
